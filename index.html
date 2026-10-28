@@ -57,7 +57,7 @@ body {
   padding-right: max(16px, env(safe-area-inset-right, 0px));
   padding-block: 28px 64px;
 }
-.wrap { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+.wrap { max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
 button, input, textarea, select { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
@@ -88,7 +88,7 @@ h1 span { color: var(--title-pop); }
 .gate .gact { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
 .me input { width: 140px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); }
 
-.tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 5px; background: var(--chip); border: 1px solid var(--line); border-radius: 14px; }
+.tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 5px; background: var(--chip); border: 1px solid var(--line); border-radius: 14px; }
 .tab { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 12px; border-radius: 10px; text-decoration: none; color: var(--muted); font-family: var(--f-display); font-weight: 700; font-size: 20px; letter-spacing: .04em; text-transform: uppercase; }
 .tab em { font-style: normal; font-family: var(--f-mono); font-size: 12px; font-weight: 500; letter-spacing: 0; background: var(--btn-bg); color: var(--ink); border-radius: 999px; padding: 1px 8px; min-width: 1.6em; text-align: center; }
 .tab em:empty { display: none; }
@@ -123,7 +123,7 @@ h1 span { color: var(--title-pop); }
 .ghost:hover { color: var(--ink); }
 .msg { font-size: 13px; color: var(--muted); }
 
-.bar { display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center; gap: 8px; }
+.bar { display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center; gap: 7px; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--surface); }
 .seg button { border: 0; background: none; padding: 5px 10px; white-space: nowrap; border-radius: 999px; cursor: pointer; font-size: 13px; color: var(--muted); }
@@ -134,6 +134,7 @@ h1 span { color: var(--title-pop); }
 .count { font-family: var(--f-mono); font-size: 12px; color: var(--on-bg-muted); font-weight: 500; }
 
 .list { display: flex; flex-direction: column; gap: 14px; }
+.list > * { flex-shrink: 0; }
 .add, .film, .seg, .notice { color: var(--ink); }
 .film { --card: var(--card1); --edge: var(--edge1); background: var(--card); border: 1px solid color-mix(in srgb, var(--edge) 25%, transparent); border-left: 5px solid var(--edge); border-radius: 12px; box-shadow: 0 8px 20px -14px var(--edge); overflow: hidden; }
 .film:nth-child(5n+2) { --card: var(--card2); --edge: var(--edge2); }
@@ -298,7 +299,7 @@ h1 span { color: var(--title-pop); }
 .gmenu button:hover em, .gmenu button:focus-visible em { color: #ff5964; }
 .gmenu button[aria-selected="true"] { font-weight: 700; color: #ff5964; }
 .gmenu button[aria-selected="true"] span::after { content: " ✓"; }
-.search { flex: 1 1 200px; min-width: 0; display: flex; align-items: center; gap: 8px; background: #ffffff; border: 1.5px solid rgba(56, 97, 140, .22); border-radius: 999px; padding: 0 6px 0 14px; box-shadow: 0 4px 12px -10px #38618c; color: #38618c; transition: border-color .15s, box-shadow .15s; }
+.search { flex: 1 1 96px; min-width: 96px; max-width: 280px; margin-left: auto; min-width: 0; display: flex; align-items: center; gap: 8px; background: #ffffff; border: 1.5px solid rgba(56, 97, 140, .22); border-radius: 999px; padding: 0 6px 0 14px; box-shadow: 0 4px 12px -10px #38618c; color: #38618c; transition: border-color .15s, box-shadow .15s; padding-left: 12px; }
 .search:focus-within { border-color: #35a7ff; box-shadow: 0 0 0 4px rgba(53, 167, 255, .18); }
 .search > .gi { width: 16px; height: 16px; flex: 0 0 auto; }
 .search input { flex: 1 1 auto; min-width: 0; border: 0; background: none; outline: none; padding: 8px 0; font: inherit; font-size: 14px; color: #1d3550; -webkit-appearance: none; appearance: none; }
@@ -374,6 +375,89 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
 .wtag.prime { --wc: #1f8fd1; } .wtag.netflix { --wc: #d81f26; } .wtag.hotstar { --wc: #1b2a8a; } .wtag.apple { --wc: #1c1c1e; }
 .cact { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; }
 .toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 30; background: #1d3550; color: #ffffff; padding: 10px 16px; border-radius: 999px; font-size: 14px; box-shadow: 0 12px 30px -12px rgba(29, 53, 80, .6); max-width: calc(100vw - 32px); }
+.dupwarn { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: -4px; padding: 8px 12px; border-radius: 10px; background: #fde4e6; color: #8f1d27; font-size: 13px; }
+.dupwarn .ghost { background: #ffffff; color: #8f1d27; border-color: rgba(143, 29, 39, .3); }
+#addForm input[aria-invalid="true"] { border-color: #d9505b; }
+.lookup { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 8px; margin-top: -4px; }
+.lkrow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.lkbtn { display: inline-flex; align-items: center; gap: 7px; border: 1.5px solid var(--a-deep, #3c4276); background: #ffffff; color: var(--a-deep, #3c4276); border-radius: 999px; padding: 7px 14px; font-size: 13px; font-weight: 600; cursor: pointer; }
+.lkbtn .gi { width: 15px; height: 15px; }
+.lkbtn:hover { background: var(--a-deep, #3c4276); color: #ffffff; }
+.lkbtn:disabled { opacity: .6; cursor: default; }
+.lkmsg { font-size: 13px; color: var(--a-soft, var(--muted)); }
+.lklist { display: flex; flex-direction: column; gap: 6px; background: #ffffff; border-radius: 14px; padding: 6px; border: 1px solid rgba(60, 66, 118, .14); }
+.lklist button { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; width: 100%; border: 0; background: none; border-radius: 10px; padding: 9px 12px; text-align: left; cursor: pointer; color: #1d2150; font: inherit; }
+.lklist button:hover, .lklist button:focus-visible { background: #f1efe9; outline: none; }
+.lklist .lt { font-weight: 700; font-size: 15px; }
+.lklist .lt span { font-weight: 400; color: #6b6480; }
+.lklist .ls { font-size: 12px; color: #6b6480; }
+.lklist .typed { border-top: 1px dashed rgba(60, 66, 118, .2); border-radius: 0 0 10px 10px; color: #6b6480; font-size: 13px; }
+.lkchosen { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; background: #dff3e6; color: #0f5a32; border-radius: 10px; padding: 8px 12px; font-size: 13px; }
+.lkchosen b { font-weight: 700; }
+.lkchosen .ghost { background: #ffffff; color: #0f5a32; border-color: rgba(15, 90, 50, .3); margin-left: auto; }
+.wl { display: flex; flex-direction: column; gap: 14px; }
+.wlbtn { border: 1px solid var(--line); background: var(--btn-bg); border-radius: 999px; padding: 3px 10px; font-size: 12px; cursor: pointer; color: #38618c; font-weight: 500; }
+.wlbtn:hover { border-color: #35a7ff; }
+.wlbtn[aria-pressed="true"] { background: #35a7ff; border-color: #35a7ff; color: #0b2540; font-weight: 600; }
+.tab { white-space: nowrap; }
+@media (max-width: 560px) { .tab { font-size: 15px; padding: 10px 6px; gap: 5px; } }
+.wlbig { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; border: 2px solid #35a7ff; background: #ffffff; color: #1d5f9e; border-radius: 14px; padding: 12px 10px; font-family: var(--f-display); font-weight: 800; font-size: 18px; letter-spacing: .03em; white-space: nowrap; text-transform: uppercase; cursor: pointer; transition: transform .15s, box-shadow .15s; }
+.wlbig .gi { width: 20px; height: 20px; stroke-width: 2.2; }
+.wlbig:hover { transform: translateY(-1px); box-shadow: 0 8px 18px -12px #35a7ff; }
+.wlbig[aria-pressed="true"] { background: #35a7ff; color: #0b2540; }
+@media (prefers-reduced-motion: reduce) { .wlbig, .wlbig:hover { transition: none; transform: none; } }
+.layout { display: flex; flex-direction: column; gap: 22px; }
+.maincol { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+@media (min-width: 1100px) {
+  .layout { display: grid; grid-template-columns: minmax(0, 1fr) 290px; align-items: start; gap: 24px; }
+  .board { position: sticky; top: calc(16px + env(safe-area-inset-top, 0px)); }
+  .board > summary { pointer-events: none; }
+  .board > summary::after { display: none; }
+}
+.board { background: #ffffff; border: 1.5px solid rgba(56, 97, 140, .18); border-top: 5px solid #ffe74c; border-radius: 16px; padding: 14px 14px 12px; box-shadow: 0 10px 24px -18px #38618c; color: var(--ink); }
+.board > summary { list-style: none; cursor: pointer; display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.board > summary::-webkit-details-marker { display: none; }
+.board > summary::after { content: "▾"; color: #38618c; margin-left: 6px; }
+.board[open] > summary::after { content: "▴"; }
+.board .bt { font-family: var(--f-display); font-weight: 800; font-size: 21px; letter-spacing: .03em; text-transform: uppercase; color: #1d3550; white-space: nowrap; }
+.board .bsub { font-size: 12px; color: #38618c; margin-left: auto; white-space: nowrap; }
+.bsort { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 12px 0 10px; padding: 3px; background: #f3f6fa; border-radius: 999px; }
+.bsort button { border: 0; background: none; border-radius: 999px; padding: 6px 8px; font-size: 12px; font-weight: 600; color: #38618c; cursor: pointer; }
+.bsort button[aria-pressed="true"] { background: #38618c; color: #ffffff; }
+.blist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.blist li { display: grid; grid-template-columns: 26px 34px minmax(0, 1fr); align-items: center; gap: 8px; padding: 8px; border-radius: 12px; }
+.blist li.me { background: #eef6ff; }
+.blist .rk { font-family: var(--f-display); font-weight: 800; font-size: 20px; text-align: center; color: #7e95ad; }
+.blist li:nth-child(1) .rk { color: #e0a800; }
+.blist .av { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #ffffff; background: var(--avc, #38618c); position: relative; }
+.blist .av .crown { position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-8deg); font-size: 15px; }
+.blist .who2 { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.blist .nm { font-weight: 700; font-size: 14px; color: #1d3550; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.blist .st { display: flex; gap: 10px; font-size: 12px; color: #38618c; font-variant-numeric: tabular-nums; }
+.blist .st b { font-weight: 700; color: #1d3550; }
+.blist .bar { height: 5px; border-radius: 999px; background: #e6edf5; overflow: hidden; }
+.blist .bar i { display: block; height: 100%; background: linear-gradient(90deg, #35a7ff, #38618c); border-radius: inherit; }
+.board .bempty { font-size: 13px; color: #38618c; margin: 6px 0 0; }
+#byBtn { display: inline-flex; align-items: center; gap: 7px; border: 0; border-radius: 999px; padding: 8px 14px 8px 13px; background: #38618c; color: #ffffff; font-size: 13px; font-weight: 600; cursor: pointer; box-shadow: 0 6px 14px -10px #38618c; white-space: nowrap; max-width: 190px; }
+#byBtn #byBtnTxt { overflow: hidden; text-overflow: ellipsis; }
+#byBtn .gi { width: 15px; height: 15px; flex: 0 0 auto; }
+#byBtn .chev { width: 14px; height: 14px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; transition: transform .15s; }
+#byBtn[aria-expanded="true"] .chev { transform: rotate(180deg); }
+@media (max-width: 560px) { .bar .search { flex: 1 1 100%; max-width: none; } }
+/* Scroll the cards inside their own box, so the tabs and filters stay in view */
+@media (min-width: 760px) and (min-height: 560px) {
+  #list, #wlist {
+    max-height: calc(100vh - 150px); max-height: calc(100dvh - 150px);
+    overflow-y: auto; overscroll-behavior: contain;
+    padding: 4px 10px 12px 2px; margin-right: -10px;
+    scrollbar-width: thin; scrollbar-color: #9fb3c8 transparent; scroll-behavior: smooth;
+  }
+  #list::-webkit-scrollbar, #wlist::-webkit-scrollbar { width: 8px; }
+  #list::-webkit-scrollbar-thumb, #wlist::-webkit-scrollbar-thumb { background: #b9c8d8; border-radius: 999px; }
+  #list::-webkit-scrollbar-thumb:hover, #wlist::-webkit-scrollbar-thumb:hover { background: #38618c; }
+  #list::-webkit-scrollbar-track, #wlist::-webkit-scrollbar-track { background: transparent; }
+}
+@media (prefers-reduced-motion: reduce) { #list, #wlist { scroll-behavior: auto; } }
 </style>
 
 <div class="wrap">
@@ -388,6 +472,9 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
       <button type="button" class="btn" id="mkInvite">Invite someone<span class="rdot" id="inviteDot" hidden aria-hidden="true"></span><span class="sr" id="inviteDotSr"></span></button>
     </div>
   </header>
+
+  <div class="layout">
+  <div class="maincol">
 
   <section class="invite" id="invitePanel" hidden>
     <div class="ihead">
@@ -432,6 +519,7 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
 
   <nav class="tabs" id="tabs" aria-label="Sections" hidden>
     <a href="#list" id="tabList" class="tab"><span>The list</span><em id="tabCount"></em></a>
+    <a href="#watch" id="tabWatch" class="tab"><span>My watch list</span><em id="tabWCount"></em></a>
     <a href="#add" id="tabAdd" class="tab"><span>Add a pick</span><em>+</em></a>
   </nav>
 
@@ -441,8 +529,17 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
       <button type="button" data-kind="movie" aria-pressed="true"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M7 3v18M17 3v18M2 8h5M2 13h5M2 18h5M17 8h5M17 13h5M17 18h5"/></svg>Movie</button>
       <button type="button" data-kind="show" aria-pressed="false"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="m17 2-5 5-5-5"/></svg>TV show</button>
     </div>
-    <label><span id="fTitleLbl">Movie title</span><input id="fTitle" required maxlength="120" placeholder="Past Lives"></label>
+    <label><span id="fTitleLbl">Movie title</span><input id="fTitle" required maxlength="120" placeholder="Past Lives" aria-describedby="dupWarn"></label>
     <label>Year<input id="fYear" inputmode="numeric" maxlength="4" placeholder="2023"></label>
+    <div class="dupwarn" id="dupWarn" role="alert" hidden></div>
+    <div class="lookup" id="lookup" hidden>
+      <div class="lkrow">
+        <button type="button" class="lkbtn" id="lkBtn"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Find the official title</button>
+        <span class="lkmsg" id="lkMsg" aria-live="polite"></span>
+      </div>
+      <div class="lkchosen" id="lkChosen" hidden></div>
+      <div class="lklist" id="lkList" role="listbox" aria-label="Matching titles" hidden></div>
+    </div>
     <div class="gfield" role="group" aria-labelledby="gLbl">
       <span class="lbl" id="gLbl">Genre <small>(pick up to 3)</small></span>
       <div class="chips" id="gChips"></div>
@@ -482,13 +579,17 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
       <button type="button" id="gBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Genre"><span id="gBtnTxt">All genres</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
       <div class="gmenu" id="gMenu" role="listbox" aria-label="Genre" hidden></div>
     </div>
+    <div class="gdrop" id="byDrop">
+      <button type="button" id="byBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Added by"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg><span id="byBtnTxt">Anyone</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="gmenu" id="byMenu" role="listbox" aria-label="Added by" hidden></div>
+    </div>
     <div class="seg sortseg" role="group" aria-label="Sort">
       <button type="button" data-s="new" aria-pressed="true">Newest</button>
       <button type="button" data-s="top" aria-pressed="false">Top rated</button>
     </div>
     <div class="search" role="search">
       <svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-      <input id="q" type="search" placeholder="Search picks…" aria-label="Search picks" autocomplete="off" spellcheck="false">
+      <input id="q" type="search" placeholder="Search…" aria-label="Search picks" autocomplete="off" spellcheck="false">
       <button type="button" id="qClear" aria-label="Clear search" hidden><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
     </div>
   </div>
@@ -498,8 +599,22 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
   </div>
   <div class="count" id="count"></div>
 
+  <section class="wl" id="wlWrap" hidden>
+    <div class="count" id="wlCount"></div>
+    <div class="list" id="wlist"></div>
+  </section>
   <div class="list" id="list">
     <div class="empty"><strong>No picks yet</strong>Tap Add a pick to recommend the first movie or show. Everyone who opens this page sees it, can mark it watched and give it a verdict.</div>
+  </div>
+  </div>
+  <details class="board" id="board" hidden>
+    <summary><span class="bt">🏆 Leaderboard</span><span class="bsub" id="boardSub"></span></summary>
+    <div class="bsort" role="group" aria-label="Rank by">
+      <button type="button" data-bs="added" aria-pressed="true">Most added</button>
+      <button type="button" data-bs="watched" aria-pressed="false">Most watched</button>
+    </div>
+    <ol class="blist" id="boardList"></ol>
+  </details>
   </div>
 </div>
 
@@ -510,13 +625,13 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
   let marksA = {}, marksB = {};
   let movies = [];            // [{id, ...data}]
   let marks = {};             // uid -> {nick, r:{movieId:{w,s}}}
-  let mine = { nick: "", member: false, r: {} };
+  let mine = { nick: "", member: false, r: {}, wl: {} };
   let amOwner = false;
   let proposals = [];         // open invite requests
   let myCodes = {};           // proposalId -> code (only the proposer ever sees these)
   let gotMine = false, gateOpen = false;
   let profiles = {};
-  let filter = "all", sort = "new", filterWho = null, filterKind = "all", filterGenre = "", addKind = "movie", query = "", addWhere = "";
+  let filter = "all", sort = "new", filterWho = null, filterKind = "all", filterGenre = "", filterBy = "", addKind = "movie", query = "", addWhere = "";
   const kindOf = (m) => (m.kind === "show" ? "show" : "movie");
   const norm = (t) => String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ").trim();
   let confirmDel = null;
@@ -581,70 +696,13 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
     return `<span class="vpill shine v${tierOf(n)}"><b>${vIcon(tierOf(n))}${t.label.toUpperCase()}</b></span>`;
   }
 
-  async function render() {
-    const ids = new Set(Object.keys(marks));
-    movies.forEach(m => m.addedBy && ids.add(m.addedBy));
-    if (myId) ids.add(myId);
-    if (user && ids.size) { try { profiles = await user.profiles([...ids]); } catch (e) {} }
-
-    let list = movies.slice();
-    const myR = (mid) => mine.r[mid] || {};
-    const people = [];
-    if (myId) people.push(myId);
-    Object.keys(marks).forEach(u => { if (u !== myId) people.push(u); });
-    if (!filterWho || !people.includes(filterWho)) filterWho = people[0] || null;
-    const whoR = (mid) => (filterWho === myId ? mine.r : ((marks[filterWho] && marks[filterWho].r) || {}))[mid] || {};
-    const seenBy = (mid) => { const x = whoR(mid); return !!(x.w || x.s); };
-    $("whoBar").hidden = gateOpen || !mainVisible || currentView() !== "list" || filter === "all" || !people.length;
-    $("tabCount").textContent = movies.length ? String(movies.length) : "";
-    $("whoChips").innerHTML = people.map(u => `<button type="button" data-who="${esc(u)}" aria-pressed="${u === filterWho}">${u === myId ? "Me" : esc(nameOf(u))}</button>`).join("");
-    if (filter === "todo") list = list.filter(m => !seenBy(m.id));
-    if (filter === "seen") list = list.filter(m => seenBy(m.id));
-    if (filterKind !== "all") list = list.filter(m => kindOf(m) === filterKind);
-    // genre menu: genres in use (within the chosen type), with counts
-    const pool = filterKind === "all" ? movies : movies.filter(m => kindOf(m) === filterKind);
-    const gCount = {};
-    pool.forEach(m => (Array.isArray(m.genres) ? m.genres : []).forEach(g => { gCount[g] = (gCount[g] || 0) + 1; }));
-    const gList = GENRES.filter(g => gCount[g]);
-    if (filterGenre && !gCount[filterGenre]) gList.push(filterGenre);
-    const opt = (val, label, n) => `<button type="button" role="option" data-gv="${esc(val)}" aria-selected="${val === filterGenre}"><span>${label}</span>${n != null ? `<em>${n}</em>` : ""}</button>`;
-    $("gMenu").innerHTML = opt("", "All genres", pool.length) + gList.map(g => opt(g, esc(g), gCount[g] || 0)).join("");
-    $("gBtnTxt").textContent = filterGenre || "All genres";
-    if (filterGenre) list = list.filter(m => Array.isArray(m.genres) && m.genres.includes(filterGenre));
-    const qn = norm(query);
-    if (qn) list = list.filter(m => norm([m.title, m.year, m.note, (m.genres || []).join(" "), whereName(m), kindOf(m) === "show" ? "tv show series" : "movie film", m.addedBy === myId ? "you" : nameOf(m.addedBy)].join(" ")).includes(qn));
-    if (sort === "new") list.sort((a, b) => (b.addedAt || 0) - (a.addedAt || 0));
-    else list.sort((a, b) => (avg(b.id) ?? -1) - (avg(a.id) ?? -1) || (b.addedAt || 0) - (a.addedAt || 0));
-
-    const seenCount = movies.filter(m => myR(m.id).w || myR(m.id).s).length;
-    $("count").textContent = movies.length ? `${movies.length} pick${movies.length === 1 ? "" : "s"} · you've seen ${seenCount}` : "";
-
-    const el = $("list");
-    if (!movies.length) {
-      el.innerHTML = '<div class="empty"><strong>No picks yet</strong>Tap Add a pick to recommend the first movie or show. Everyone who opens this page sees it, can mark it watched and give it a verdict.</div>';
-      return;
-    }
-    if (!list.length && qn) {
-      el.innerHTML = '<div class="empty"><strong>No matches</strong>Nothing matches “' + esc(query.trim()) + '”' + (filterKind !== "all" || filterGenre || filter !== "all" ? " with these filters." : ".") + '</div>';
-      return;
-    }
-    if (!list.length && (filterKind !== "all" || filterGenre)) {
-      const what = (filterGenre ? filterGenre.toLowerCase() + " " : "") + (filterKind === "show" ? "TV shows" : filterKind === "movie" ? "movies" : "picks");
-      el.innerHTML = '<div class="empty"><strong>Nothing here</strong>No ' + esc(what) + (filter === "all" ? " on the list yet." : " match these filters.") + '</div>';
-      return;
-    }
-    if (!list.length) {
-      el.innerHTML = '<div class="empty"><strong>Nothing here</strong>' + (filterWho === myId
-        ? (filter === "todo" ? "You've seen every pick on the list." : "You haven't marked any picks as watched yet.")
-        : (filter === "todo" ? esc(nameOf(filterWho)) + " has seen every pick on the list." : esc(nameOf(filterWho)) + " hasn't marked any picks as watched yet.")) + '</div>';
-      return;
-    }
-
-    el.innerHTML = list.map(m => {
+  const myR = (mid) => mine.r[mid] || {};
+  function cardHtml(m) {
       const a = avg(m.id);
       const others = ratingsFor(m.id).filter(r => r.uid !== myId);
       const me = myR(m.id);
       const meSeen = !!(me.w || me.s);
+      const onWL = !!(mine.wl && mine.wl[m.id]);
       const nRated = ratingsFor(m.id).filter(r => r.s > 0).length;
       let mineRow = "";
       if (myId && canWrite) {
@@ -672,12 +730,139 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
               <div class="meta">Recommended by <b>${m.addedBy === myId ? "you" : esc(nameOf(m.addedBy))}</b>${m.addedAt ? ` <span class="dot">·</span> <time datetime="${new Date(m.addedAt).toISOString()}" title="${esc(new Date(m.addedAt).toLocaleString("en-IN", { dateStyle: "full", timeStyle: "short" }))}">${addedOn(m.addedAt)}</time>` : ""}</div>
               ${m.note ? `<p class="note">${esc(m.note)}</p>` : ""}
             </div>
-            <div class="side">${badgeHtml(m.id)}${isMine ? `<div class="cact">${confirmDel === m.id ? "" : `<button type="button" class="ghost" data-act="edit" data-id="${esc(m.id)}" aria-label="Edit ${esc(m.title)}">Edit</button>`}${del}</div>` : ""}</div>
+            <div class="side">${badgeHtml(m.id)}${myId && canWrite ? `<button type="button" class="wlbig" data-act="wl" data-id="${esc(m.id)}" aria-pressed="${onWL}"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true">${onWL ? '<path d="M6 3h12v18l-6-4-6 4z" fill="currentColor"/>' : '<path d="M6 3h12v18l-6-4-6 4z"/><path d="M12 7v6M9 10h6"/>'}</svg>${onWL ? "On watch list" : "Watch list"}</button>` : ""}${isMine ? `<div class="cact">${confirmDel === m.id ? "" : `<button type="button" class="ghost" data-act="edit" data-id="${esc(m.id)}" aria-label="Edit ${esc(m.title)}">Edit</button>`}${del}</div>` : ""}</div>
           </div>
           <div class="ledger">${mineRow}${otherRows}</div>
         </div>
       </article>`;
-    }).join("");
+  }
+  let boardSort = "added", lastFilterKey = "";
+  const AVC = ["#ff5964", "#35a7ff", "#e0a800", "#38618c", "#2f9e5b", "#8a5cf6", "#ff8a2a", "#7a4a26"];
+  function renderBoard() {
+    const board = $("board");
+    if (!board) return;
+    board.hidden = !mainVisible || gateOpen || !db;
+    const ids = memberIds();
+    const total = movies.length;
+    const rows = ids.map(u => {
+      const added = movies.filter(m => m.addedBy === u).length;
+      const r = (u === myId ? mine.r : (marks[u] && marks[u].r)) || {};
+      const watched = movies.filter(m => r[m.id] && (r[m.id].w || r[m.id].s)).length;
+      return { u, added, watched };
+    });
+    const key = boardSort, other = key === "added" ? "watched" : "added";
+    rows.sort((a, b) => (b[key] - a[key]) || (b[other] - a[other]) || nameOf(a.u).localeCompare(nameOf(b.u)));
+    $("boardSub").textContent = ids.length ? `${ids.length} ${ids.length === 1 ? "friend" : "friends"}` : "";
+    $("boardList").innerHTML = rows.length ? rows.map((x, i) => {
+      const nm = x.u === myId ? (mine.nick || "You") + " (you)" : nameOf(x.u);
+      const ini = (nm.trim()[0] || "?").toUpperCase();
+      let h = 0; for (const ch of x.u) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+      const pct = total ? Math.round((x.watched / total) * 100) : 0;
+      const lead = i === 0 && x[key] > 0;
+      return `<li class="${x.u === myId ? "me" : ""}"><span class="rk">${i + 1}</span><span class="av" style="--avc:${AVC[h % AVC.length]}">${lead ? '<i class="crown" aria-hidden="true">👑</i>' : ""}${esc(ini)}</span>
+        <span class="who2"><span class="nm">${esc(nm)}</span><span class="st"><span>🎬 <b>${x.added}</b> added</span><span>👀 <b>${x.watched}</b> watched</span></span><span class="bar" title="Watched ${x.watched} of ${total} picks (${pct}%)"><i style="width:${pct}%"></i></span></span></li>`;
+    }).join("") : "";
+    if (!rows.length) $("boardList").innerHTML = '<li class="bempty">Friends appear here once they join.</li>';
+  }
+  document.querySelectorAll("[data-bs]").forEach(b => b.addEventListener("click", () => {
+    boardSort = b.dataset.bs;
+    document.querySelectorAll("[data-bs]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    renderBoard();
+  }));
+  const wideMQ = window.matchMedia("(min-width: 1100px)");
+  const syncBoardOpen = () => { if (wideMQ.matches) $("board").open = true; };
+  syncBoardOpen();
+  try { wideMQ.addEventListener("change", syncBoardOpen); } catch (e) {}
+  function renderWatch() {
+    const ids = Object.keys(mine.wl || {});
+    const items = movies.filter(m => mine.wl[m.id]);
+    const seen = (m) => !!(myR(m.id).w || myR(m.id).s);
+    items.sort((a, b) => (seen(a) - seen(b)) || ((mine.wl[b.id] || 0) - (mine.wl[a.id] || 0)));
+    const todo = items.filter(m => !seen(m)).length;
+    $("tabWCount").textContent = todo ? String(todo) : "";
+    $("wlCount").textContent = items.length ? `${todo} to watch${items.length - todo ? ` · ${items.length - todo} watched` : ""}` : "";
+    $("wlist").innerHTML = items.length ? items.map(cardHtml).join("")
+      : '<div class="empty"><strong>Your watch list is empty</strong>Tap <b>+ Watch list</b> on any pick in The list to save it here for later.</div>';
+    void ids;
+  }
+  async function render() {
+    const ids = new Set(Object.keys(marks));
+    movies.forEach(m => m.addedBy && ids.add(m.addedBy));
+    if (myId) ids.add(myId);
+    if (user && ids.size) { try { profiles = await user.profiles([...ids]); } catch (e) {} }
+
+    let list = movies.slice();
+    renderWatch();
+    renderBoard();
+    const people = [];
+    if (myId) people.push(myId);
+    Object.keys(marks).forEach(u => { if (u !== myId) people.push(u); });
+    if (!filterWho || !people.includes(filterWho)) filterWho = people[0] || null;
+    const whoR = (mid) => (filterWho === myId ? mine.r : ((marks[filterWho] && marks[filterWho].r) || {}))[mid] || {};
+    const seenBy = (mid) => { const x = whoR(mid); return !!(x.w || x.s); };
+    $("whoBar").hidden = gateOpen || !mainVisible || currentView() !== "list" || filter === "all" || !people.length;
+    $("tabCount").textContent = movies.length ? String(movies.length) : "";
+    $("whoChips").innerHTML = people.map(u => `<button type="button" data-who="${esc(u)}" aria-pressed="${u === filterWho}">${u === myId ? "Me" : esc(nameOf(u))}</button>`).join("");
+    if (filter === "todo") list = list.filter(m => !seenBy(m.id));
+    if (filter === "seen") list = list.filter(m => seenBy(m.id));
+    if (filterKind !== "all") list = list.filter(m => kindOf(m) === filterKind);
+    // genre menu: genres in use (within the chosen type), with counts
+    const pool = filterKind === "all" ? movies : movies.filter(m => kindOf(m) === filterKind);
+    const gCount = {};
+    pool.forEach(m => (Array.isArray(m.genres) ? m.genres : []).forEach(g => { gCount[g] = (gCount[g] || 0) + 1; }));
+    const gList = GENRES.filter(g => gCount[g]);
+    if (filterGenre && !gCount[filterGenre]) gList.push(filterGenre);
+    const opt = (val, label, n) => `<button type="button" role="option" data-gv="${esc(val)}" aria-selected="${val === filterGenre}"><span>${label}</span>${n != null ? `<em>${n}</em>` : ""}</button>`;
+    $("gMenu").innerHTML = opt("", "All genres", pool.length) + gList.map(g => opt(g, esc(g), gCount[g] || 0)).join("");
+    $("gBtnTxt").textContent = filterGenre || "All genres";
+    if (filterGenre) list = list.filter(m => Array.isArray(m.genres) && m.genres.includes(filterGenre));
+    // added-by menu: everyone on the list, with how many picks they added
+    const byIds = memberIds();
+    movies.forEach(m => { if (m.addedBy && !byIds.includes(m.addedBy)) byIds.push(m.addedBy); });
+    if (filterBy && !byIds.includes(filterBy)) filterBy = "";
+    const byCount = (u) => movies.filter(m => m.addedBy === u).length;
+    byIds.sort((a, b) => (a === myId ? -1 : b === myId ? 1 : byCount(b) - byCount(a) || nameOf(a).localeCompare(nameOf(b))));
+    const byName = (u) => (u === myId ? "Me" : nameOf(u));
+    const bopt = (val, label, n) => `<button type="button" role="option" data-bv="${esc(val)}" aria-selected="${val === filterBy}"><span>${label}</span><em>${n}</em></button>`;
+    $("byMenu").innerHTML = bopt("", "Anyone", movies.length) + byIds.map(u => bopt(u, esc(byName(u)), byCount(u))).join("");
+    $("byBtnTxt").textContent = filterBy ? "By " + byName(filterBy) : "Anyone";
+    if (filterBy) list = list.filter(m => m.addedBy === filterBy);
+    const qn = norm(query);
+    if (qn) list = list.filter(m => norm([m.title, m.year, m.note, (m.genres || []).join(" "), whereName(m), kindOf(m) === "show" ? "tv show series" : "movie film", m.addedBy === myId ? "you" : nameOf(m.addedBy)].join(" ")).includes(qn));
+    if (sort === "new") list.sort((a, b) => (b.addedAt || 0) - (a.addedAt || 0));
+    else list.sort((a, b) => (avg(b.id) ?? -1) - (avg(a.id) ?? -1) || (b.addedAt || 0) - (a.addedAt || 0));
+
+    const seenCount = movies.filter(m => myR(m.id).w || myR(m.id).s).length;
+    $("count").textContent = movies.length ? `${movies.length} pick${movies.length === 1 ? "" : "s"} · you've seen ${seenCount}` : "";
+
+    const el = $("list");
+    const fkey = [filter, filterWho, filterKind, filterGenre, filterBy, sort, norm(query)].join("|");
+    if (fkey !== lastFilterKey) { lastFilterKey = fkey; el.scrollTop = 0; }
+    if (!movies.length) {
+      el.innerHTML = '<div class="empty"><strong>No picks yet</strong>Tap Add a pick to recommend the first movie or show. Everyone who opens this page sees it, can mark it watched and give it a verdict.</div>';
+      return;
+    }
+    if (!list.length && qn) {
+      el.innerHTML = '<div class="empty"><strong>No matches</strong>Nothing matches “' + esc(query.trim()) + '”' + (filterKind !== "all" || filterGenre || filter !== "all" ? " with these filters." : ".") + '</div>';
+      return;
+    }
+    if (!list.length && filterBy && filterKind === "all" && !filterGenre) {
+      el.innerHTML = '<div class="empty"><strong>Nothing here</strong>' + (filterBy === myId ? "You haven't" : esc(nameOf(filterBy)) + " hasn't") + (filter === "all" ? " added any picks yet." : " added any picks that match these filters.") + '</div>';
+      return;
+    }
+    if (!list.length && (filterKind !== "all" || filterGenre)) {
+      const what = (filterGenre ? filterGenre.toLowerCase() + " " : "") + (filterKind === "show" ? "TV shows" : filterKind === "movie" ? "movies" : "picks");
+      el.innerHTML = '<div class="empty"><strong>Nothing here</strong>No ' + esc(what) + (filterBy ? " added by " + (filterBy === myId ? "you" : esc(nameOf(filterBy))) : "") + (filter === "all" && !filterBy ? " on the list yet." : filter === "all" ? " yet." : " match these filters.") + '</div>';
+      return;
+    }
+    if (!list.length) {
+      el.innerHTML = '<div class="empty"><strong>Nothing here</strong>' + (filterWho === myId
+        ? (filter === "todo" ? "You've seen every pick on the list." : "You haven't marked any picks as watched yet.")
+        : (filter === "todo" ? esc(nameOf(filterWho)) + " has seen every pick on the list." : esc(nameOf(filterWho)) + " hasn't marked any picks as watched yet.")) + '</div>';
+      return;
+    }
+
+    el.innerHTML = list.map(cardHtml).join("");
   }
 
   // ---- genre chips in the add form ----
@@ -730,6 +915,7 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
     if (!b) return;
     const g = b.dataset.g;
     picked = picked.includes(g) ? picked.filter(x => x !== g) : (picked.length < 3 ? [...picked, g] : picked);
+    autoGenres = false;
     drawChips();
   });
   drawChips();
@@ -740,7 +926,7 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
     if (!db || !myId) return;
     if (writing) { pending = true; return; }
     writing = true;
-    try { await db.doc(myCol + "/" + myId).set({ nick: mine.nick, member: !!(mine.member || amOwner), r: mine.r }); }
+    try { await db.doc(myCol + "/" + myId).set({ nick: mine.nick, member: !!(mine.member || amOwner), r: mine.r, wl: mine.wl || {} }); }
     catch (e) { showNotice("Couldn't save your rating. Ask the page owner to invite you as an Editor."); }
     writing = false;
     if (pending) { pending = false; saveMine(); }
@@ -755,7 +941,7 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
   }
   function showNotice(t) { $("notice").textContent = t; $("notice").hidden = false; }
 
-  $("list").addEventListener("click", async (ev) => {
+  const onCardClick = async (ev) => {
     const b = ev.target.closest("button[data-act]");
     if (!b) return;
     const id = b.dataset.id, act = b.dataset.act;
@@ -767,6 +953,10 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
       mine.r[id] = { w: true, s: n };
     } else if (act === "clear") {
       mine.r[id] = { w: true, s: 0 };
+    } else if (act === "wl") {
+      mine.wl = mine.wl || {};
+      if (mine.wl[id]) delete mine.wl[id]; else mine.wl[id] = Date.now();
+      render(); saveMine(); return;
     } else if (act === "edit") { startEdit(id); return; }
     else if (act === "del") { confirmDel = id; render(); return; }
     else if (act === "delno") { confirmDel = null; render(); return; }
@@ -776,7 +966,9 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
       return;
     } else return;
     render(); saveMine();
-  });
+  };
+  $("list").addEventListener("click", onCardClick);
+  $("wlist").addEventListener("click", onCardClick);
 
   const CODE_ABC = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   const INVITE_DAYS = 7;
@@ -788,12 +980,14 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
   const isMember = () => amOwner || !!mine.member;
 
   let mainVisible = true;
-  const currentView = () => (location.hash === "#add" && canWrite ? "add" : "list");
+  const currentView = () => (location.hash === "#add" && canWrite ? "add" : location.hash === "#watch" && canWrite ? "watch" : "list");
   function applyView() {
     const v = currentView();
     $("tabs").hidden = !mainVisible || !canWrite;
     $("tabList").setAttribute("aria-current", v === "list" ? "page" : "false");
     $("tabAdd").setAttribute("aria-current", v === "add" ? "page" : "false");
+    $("tabWatch").setAttribute("aria-current", v === "watch" ? "page" : "false");
+    $("wlWrap").hidden = !mainVisible || v !== "watch";
     $("addForm").hidden = !mainVisible || !canWrite || v !== "add";
     ["list", "count"].forEach(id => { $(id).hidden = !mainVisible || v !== "list"; });
     document.querySelectorAll(".bar").forEach(b => { b.hidden = !mainVisible || v !== "list"; });
@@ -801,13 +995,14 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
   }
   function setMain(visible) {
     mainVisible = visible;
+    try { renderBoard(); } catch (e) {}
     if (!visible) $("invitePanel").hidden = true;
     renderProps();
     applyView();
   }
   window.addEventListener("hashchange", () => {
     applyView();
-    if (currentView() === "list") render();
+    if (currentView() !== "add") render();
     else { $("seeList").hidden = true; setTimeout(() => { try { $("fTitle").focus(); } catch (e) {} }, 0); }
     window.scrollTo(0, 0);
   });
@@ -1109,6 +1304,29 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
   });
   document.addEventListener("keydown", (ev) => { if (ev.key === "Escape" && !$("gMenu").hidden) { gOpen(false); $("gBtn").focus(); } });
   document.addEventListener("click", (ev) => { if (!$("gMenu").hidden && !$("gDrop").contains(ev.target)) gOpen(false); });
+
+  // ---- added-by dropdown ----
+  function byOpen(open) {
+    $("byMenu").hidden = !open;
+    $("byBtn").setAttribute("aria-expanded", String(open));
+    if (open) { if (!$("gMenu").hidden) gOpen(false); const cur = $("byMenu").querySelector('[aria-selected="true"]') || $("byMenu").querySelector("button"); if (cur) cur.focus(); }
+  }
+  $("byBtn").addEventListener("click", () => byOpen($("byMenu").hidden));
+  $("byMenu").addEventListener("click", (ev) => {
+    const b = ev.target.closest("button[data-bv]");
+    if (!b) return;
+    filterBy = b.dataset.bv;
+    byOpen(false); $("byBtn").focus();
+    render();
+  });
+  $("byMenu").addEventListener("keydown", (ev) => {
+    const items = [...$("byMenu").querySelectorAll("button")];
+    const i = items.indexOf(document.activeElement);
+    if (ev.key === "ArrowDown") { ev.preventDefault(); (items[i + 1] || items[0]).focus(); }
+    else if (ev.key === "ArrowUp") { ev.preventDefault(); (items[i - 1] || items[items.length - 1]).focus(); }
+  });
+  document.addEventListener("keydown", (ev) => { if (ev.key === "Escape" && !$("byMenu").hidden) { byOpen(false); $("byBtn").focus(); } });
+  document.addEventListener("click", (ev) => { if (!$("byMenu").hidden && !$("byDrop").contains(ev.target)) byOpen(false); });
   function setWhere(w) {
     addWhere = w;
     document.querySelectorAll("[data-w]").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.w === w)));
@@ -1116,12 +1334,126 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
     if (w === "other") setTimeout(() => { try { $("fWhere").focus(); } catch (e) {} }, 0);
   }
   document.querySelectorAll("[data-w]").forEach(b => b.addEventListener("click", () => setWhere(addWhere === b.dataset.w ? "" : b.dataset.w)));
+  // ---- official-title lookup (asks Claude; the page itself can't reach outside sites) ----
+  let sample = null, chosen = null, typedOk = false, lkCtl = null, lkResults = [], autoGenres = false;
+  const KIND_WORD = { movie: "movie", show: "TV show" };
+  function renderChosen() {
+    const box = $("lkChosen");
+    $("lkBtn").hidden = !!chosen;
+    if (!chosen) { box.hidden = true; box.innerHTML = ""; return; }
+    box.innerHTML = `<span>✓ Using the official title <b>${esc(chosen.title)}</b>${chosen.year ? " (" + esc(chosen.year) + ")" : ""} · ${KIND_WORD[chosen.kind] || "movie"}</span><button type="button" class="ghost" id="lkChange">Change</button>`;
+    box.hidden = false;
+    $("lkChange").onclick = () => { chosen = null; typedOk = false; renderChosen(); $("fTitle").focus(); runLookup(); };
+  }
+  function clearLookup() {
+    if (lkCtl) lkCtl.abort();
+    chosen = null; typedOk = false; lkResults = [];
+    $("lkList").hidden = true; $("lkList").innerHTML = ""; $("lkMsg").textContent = "";
+    renderChosen();
+  }
+  function choose(c) {
+    chosen = { title: c.title, year: c.year || "", kind: c.kind, genres: c.genres || [] };
+    typedOk = false;
+    $("fTitle").value = chosen.title;
+    if (chosen.year) $("fYear").value = chosen.year;
+    setKind(chosen.kind);
+    const gs = (chosen.genres || []).filter(g => GENRES.includes(g)).slice(0, 3);
+    if (gs.length && (!picked.length || autoGenres)) { picked = gs; autoGenres = true; drawChips(); }
+    $("lkList").hidden = true; $("lkMsg").textContent = "";
+    renderChosen();
+    showDup(findDup());
+  }
+  async function runLookup() {
+    const q = $("fTitle").value.trim();
+    if (!sample) return;
+    if (!q) { $("lkMsg").textContent = "Type a title first."; $("fTitle").focus(); return; }
+    if (lkCtl) lkCtl.abort();
+    const ctl = lkCtl = new AbortController();
+    $("lkBtn").disabled = true; $("lkMsg").textContent = "Looking it up…"; $("lkList").hidden = true;
+    const prompt = `A friend is adding a recommendation to a shared watch list and typed: "${q.slice(0, 120)}".
+They marked it as a ${KIND_WORD[addKind]}${$("fYear").value.trim() ? ", year " + $("fYear").value.trim().slice(0, 4) : ""}.
+List up to 5 real, released movies or TV shows that this most likely refers to. The text may be misspelled, partial, abbreviated, or a Hindi/regional title. Put the most likely match first, and include both a movie and a series if both exist with that name.
+Use each title's official, commonly used release title (as listed on IMDb), and its first release year.
+Genres must come only from this list, at most 3: ${GENRES.join(", ")}.
+Reply with only a JSON array, for example:
+[{"title":"Tumbbad","year":"2018","type":"movie","genres":["Horror","Fantasy"],"lang":"Hindi"}]
+type is "movie" or "show". If you do not recognise anything that matches, reply [].`;
+    try {
+      const out = await sample.json(prompt, { modelTier: "quick", signal: ctl.signal });
+      if (ctl !== lkCtl) return;
+      lkResults = (Array.isArray(out) ? out : []).filter(x => x && typeof x.title === "string" && x.title.trim()).slice(0, 5).map(x => ({
+        title: String(x.title).trim().slice(0, 120),
+        year: String(x.year || "").replace(/\D/g, "").slice(0, 4),
+        kind: x.type === "show" ? "show" : "movie",
+        genres: Array.isArray(x.genres) ? x.genres.map(String) : [],
+        lang: x.lang ? String(x.lang).slice(0, 30) : "",
+      }));
+      const list = $("lkList");
+      list.innerHTML = lkResults.map((c, i) => `<button type="button" role="option" data-lk="${i}"><span class="lt">${esc(c.title)} ${c.year ? `<span>(${esc(c.year)})</span>` : ""}</span><span class="ls">${KIND_WORD[c.kind]}${c.lang ? " · " + esc(c.lang) : ""}${c.genres.length ? " · " + esc(c.genres.slice(0, 3).join(", ")) : ""}</span></button>`).join("")
+        + `<button type="button" class="typed" data-lk="typed">None of these. Add “${esc(q)}” as typed</button>`;
+      list.hidden = false;
+      $("lkMsg").textContent = lkResults.length ? "Pick the right one:" : "Couldn't find a match. You can add it as typed.";
+    } catch (e) {
+      if (e && e.code === "cancelled") return;
+      if (e && ["not_granted", "sampling_disabled", "not_declared", "capability_disabled", "capability_removed"].includes(e.code)) {
+        sample = null; $("lookup").hidden = true; return;
+      }
+      $("lkMsg").textContent = e && e.code === "rate_limited" ? "Too many lookups right now. Try again in a bit, or add it as typed." : "Couldn't look that up. Try again, or add it as typed.";
+      const list = $("lkList");
+      list.innerHTML = `<button type="button" class="typed" data-lk="typed">Add “${esc(q)}” as typed</button>`;
+      list.hidden = false;
+    } finally {
+      if (ctl === lkCtl) { $("lkBtn").disabled = false; lkCtl = null; }
+    }
+  }
+  $("lkBtn").addEventListener("click", runLookup);
+  $("lkList").addEventListener("click", (ev) => {
+    const b = ev.target.closest("button[data-lk]");
+    if (!b) return;
+    if (b.dataset.lk === "typed") {
+      typedOk = true; $("lkList").hidden = true;
+      $("lkMsg").textContent = `Will add “${$("fTitle").value.trim()}” as typed.`;
+      return;
+    }
+    const c = lkResults[Number(b.dataset.lk)];
+    if (c) choose(c);
+  });
+  $("fTitle").addEventListener("input", () => {
+    if (chosen && $("fTitle").value.trim() !== chosen.title) { chosen = null; renderChosen(); }
+    typedOk = false;
+    if (!$("lkList").hidden) { $("lkList").hidden = true; $("lkMsg").textContent = ""; }
+  });
+  $("fTitle").addEventListener("keydown", (ev) => { if (ev.key === "Enter" && sample && !chosen && !typedOk) { ev.preventDefault(); runLookup(); } });
+
+  // ---- duplicate check ----
+  // "The Office", "the office!", "Office" and "Amélie"/"Amelie" all count as the same title.
+  const titleKey = (t) => norm(t).replace(/[^a-z0-9 ]+/g, " ").replace(/^(the|a|an) /, "").replace(/\s+/g, "");
+  function findDup() {
+    const key = titleKey($("fTitle").value);
+    if (!key) return null;
+    const yr = $("fYear").value.replace(/\D/g, "").slice(0, 4);
+    return movies.find(m => m.id !== editingId && titleKey(m.title) === key && kindOf(m) === addKind && !(yr.length === 4 && m.year && m.year !== yr)) || null;
+  }
+  function showDup(dup) {
+    const w = $("dupWarn");
+    if (!dup) { w.hidden = true; w.innerHTML = ""; $("fTitle").removeAttribute("aria-invalid"); return; }
+    const who = dup.addedBy === myId ? "you" : esc(nameOf(dup.addedBy));
+    w.innerHTML = `<span><b>${esc(dup.title)}</b>${dup.year ? " (" + esc(dup.year) + ")" : ""} is already on the list, recommended by ${who}.</span><button type="button" class="ghost" id="dupSee">See it</button>`;
+    w.hidden = false;
+    $("fTitle").setAttribute("aria-invalid", "true");
+    $("dupSee").onclick = () => { const t = dup.title; endEdit(); resetForm(); query = t; $("q").value = t; $("qClear").hidden = false; location.hash = "#list"; };
+  }
+  let dupT = null;
+  const checkDup = () => { clearTimeout(dupT); dupT = setTimeout(() => showDup(findDup()), 150); };
+  $("fTitle").addEventListener("input", checkDup);
+  $("fYear").addEventListener("input", checkDup);
   function setKind(k) {
     addKind = k === "show" ? "show" : "movie";
     document.querySelectorAll("[data-kind]").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.kind === addKind)));
     $("fTitleLbl").textContent = addKind === "show" ? "Show title" : "Movie title";
     $("fTitle").placeholder = addKind === "show" ? "Panchayat" : "Past Lives";
     $("fYear").placeholder = addKind === "show" ? "2020" : "2023";
+    if ($("fTitle").value) showDup(findDup());
   }
   document.querySelectorAll("[data-kind]").forEach(b => b.addEventListener("click", () => setKind(b.dataset.kind)));
 
@@ -1130,6 +1462,7 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
   function resetForm() {
     $("fTitle").value = ""; $("fYear").value = ""; $("fNote").value = "";
     picked = []; drawChips(); $("fWhere").value = ""; setWhere("");
+    showDup(null); clearLookup(); autoGenres = false;
   }
   function startEdit(id) {
     const m = movies.find(x => x.id === id);
@@ -1139,10 +1472,13 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
     $("fTitle").value = m.title || "";
     $("fYear").value = m.year || "";
     $("fNote").value = m.note || "";
+    clearLookup();
+    chosen = { title: m.title || "", year: m.year || "", kind: kindOf(m), genres: [] };
     picked = Array.isArray(m.genres) ? m.genres.filter(g => GENRES.includes(g)).slice(0, 3) : [];
     drawChips();
     setWhere(m.where === "other" ? (m.whereOther ? "other" : "") : (WHERE[m.where] ? m.where : ""));
     $("fWhere").value = m.where === "other" ? (m.whereOther || "") : "";
+    $("lkChosen").hidden = true;
     $("addH").textContent = "Edit pick";
     $("addBtn").textContent = "Save changes";
     $("editCancel").hidden = false;
@@ -1170,18 +1506,24 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
     const title = $("fTitle").value.trim();
     if (!title) return;
     if (!db || !myId) { $("addMsg").textContent = "Sign in to claude.ai to add picks."; return; }
-    const dup = movies.find(m => m.id !== editingId && m.title.toLowerCase() === title.toLowerCase());
-    if (dup) { $("addMsg").textContent = `"${dup.title}" is already on the list.`; return; }
+    const dup = findDup();
+    if (dup) { showDup(dup); $("fTitle").focus(); return; }
+    if (sample && !chosen && !typedOk) {
+      $("addMsg").textContent = "Pick the official title first, so the list doesn't get duplicates.";
+      runLookup();
+      return;
+    }
     const yr = $("fYear").value.trim().replace(/\D/g, "").slice(0, 4);
     $("addBtn").disabled = true;
     try {
       const doc = { title: title.slice(0, 120), year: yr, note: $("fNote").value.trim().slice(0, 400), addedBy: myId, addedAt: Date.now(), genres: picked.slice(), kind: addKind };
+      if (chosen && !typedOk) doc.verified = true;
       if (addWhere && addWhere !== "other") doc.where = addWhere;
       if (addWhere === "other" && $("fWhere").value.trim()) { doc.where = "other"; doc.whereOther = $("fWhere").value.trim().slice(0, 40); }
       if (editingId) {
         const orig = movies.find(x => x.id === editingId);
         if (!orig || orig.addedBy !== myId) throw { code: "gone" };
-        const upd = { title: doc.title, year: doc.year, note: doc.note, genres: doc.genres, kind: doc.kind,
+        const upd = { title: doc.title, year: doc.year, note: doc.note, genres: doc.genres, kind: doc.kind, verified: !!doc.verified,
           where: doc.where || "", whereOther: doc.whereOther || "", editedAt: Date.now() };
         await db.doc("movies/" + editingId).update(upd);
         const done = title.slice(0, 40);
@@ -1205,6 +1547,7 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
   async function start() {
     if (!window.claude || !window.claude.use) { showNotice("Open this page on claude.ai to see and add picks."); return; }
     [db, user] = await Promise.all([claude.use("db"), claude.use("user")]);
+    claude.use("sample").then(sm => { sample = sm || null; $("lookup").hidden = !sample; }).catch(() => {});
     if (!db) { showNotice("Sign in to claude.ai to see the shared list."); $("addForm").hidden = true; return; }
     myId = user ? await user.id() : null;
     if (!myId) {
@@ -1237,7 +1580,7 @@ mark.hl { background: #ffe74c; color: inherit; border-radius: 3px; padding: 0 1p
       marks = next;
       if (myId && next[myId] && !writing) {
         const d = next[myId];
-        mine = { nick: d.nick || "", member: !!d.member, r: JSON.parse(JSON.stringify(d.r || {})) };
+        mine = { nick: d.nick || "", member: !!d.member, r: JSON.parse(JSON.stringify(d.r || {})), wl: JSON.parse(JSON.stringify(d.wl || {})) };
         if (!gateOpen) $("meName").textContent = mine.nick;
       }
       if ((which === "a") === (myCol === "marks")) { gotMine = true; maybeGate(); }
